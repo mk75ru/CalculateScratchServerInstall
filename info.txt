@@ -1,0 +1,16 @@
+clear
+echo "УСТАНОВКА Calculate Scratch Server" 
+echo
+echo "1. Создана загрузочная флэшка с Calculate Scratch Server" 
+echo
+echo "2. На флэшку скопированы несколько скриптов  в текстовом формате UNIX(ЭТО ВАЖНО!)"
+echo
+echo "3. Произведена загрузка с флэшки в режиме RAM."
+echo
+echo "4. mkdir /mnt/usb && mount /dev/sda1 /mnt/usb"
+echo
+echo "5. Скрипты скопированы в каталог /root LiveUSB"
+echo
+echo "6. Произведена настройка системы командой bash /root/net.txt"
+
+ 

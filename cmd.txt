@@ -1,0 +1,36 @@
+инструкция по установке CSS 
+	Создаем загрузочную флешку с CSS
+		
+	ssh root@server #Заходим на сервер
+	
+	bash info.txt
+	
+	bash net.txt	
+
+	bash hard.txt
+
+	bash hd-gpt-create-300m.txt
+
+	bash calculate-install.txt
+
+	clear && date && bash hd-gpt-create-300m.txt && bash calculate-install.txt && date
+
+	reboot
+
+	touch flag && while [ -e flag ] ; do clear ; date ; ping -c 1 -w 1 comp ; done
+
+	rm .ssh/known_hosts
+
+	ssh root@server
+
+	parted -l  | grep sd[a..z]:
+
+	parted /dev/sdb
+		unit gib
+		print
+		quit
+	
+	mount | grep sd
+		
+
+

@@ -1,0 +1,68 @@
+HARD=/dev/sdc
+UNIT=MiB
+PARTED="parted -a optimal $HARD unit $UNIT"
+MKPART="mkpart primary"
+echo --------------------------------------
+echo	НАЧАЛЬНАЯ КОНФИГУРАЦИЯ ДИСКА
+echo --------------------------------------
+$PARTED print
+echo --------------------------------------
+P1="1 3"
+NAME_P1="BIOS"
+P2="3 131"               #131-3=128MiB
+NAME_P2="/boot"   
+#135=131+128/32 (MiB)
+P3="135 16519"           #16519-135=16384=16*1024MiB=16GiB
+NAME_P3="swap"
+#17031=16519-16384/32 (MiB)
+P4="17031 27271"	 #27271-17031=10240MiB=10GiB
+NAME_P4="/"
+#27591=27271+10240/32(MiB)	                
+P5="27591 68551"	#68551-27271-490960MiB=40GiB  
+NAME_P5="/var"
+#69831=68551+40960/32 (MiB)
+P6="69831 80071"	#80071 - 69831 = 10240MiB=10GiB
+NAME_P6="/tmp"
+#80391=80071+10240/32(MiB)
+P7="80391 100871"	#100871-80391=20480MiB=20GiB	
+NAME_P7="/home"
+#101511=100871+20480/32(MiB)
+P8="101511 280711"	#280711-101511=179200MiB=175GiB
+NAME_P8="KVM"
+$PARTED makelabel gpt
+
+$PARTED	$MKPART $P1
+$PARTED name 1 $NAME_P1
+$PARTED set 1 bios_grub on
+
+$PARTED	$MKPART $P2
+$PARTED name 2 $NAME_P2
+$PARTED set 2 legacy_boot on
+
+$PARTED	$MKPART $P3
+$PARTED name 3 $NAME_P3
+
+$PARTED	$MKPART $P4
+$PARTED name 4 $NAME_P4
+
+$PARTED	$MKPART $P5
+$PARTED name 5 $NAME_P5
+
+$PARTED	$MKPART $P6
+$PARTED name 6 $NAME_P
+
+$PARTED	$MKPART $P7
+$PARTED name 7 $NAME_P7
+ 
+$PARTED	$MKPART $P8
+$PARTED name 8 $NAME_P8
+$PARTED set 8 lvm
+
+UNIT=GiB 
+PARTED="parted -a optimal $HARD unit $UNIT"
+echo ---------------------------------------------
+echo	КОНЕЧНАЯ КОНФИГУРАЦИЯ ДИСКА
+echo --------------------------------------------- 
+$PARTED print
+echo --------------------------------------------- 
+

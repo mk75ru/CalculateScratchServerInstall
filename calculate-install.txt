@@ -1,0 +1,31 @@
+cl-install \
+-l ru_RU --timezone Asia/Novosibirsk \
+--march x86_64 \
+--update OFF \
+-d /dev/sdc2:/boot:ext2:on \
+-d /dev/sdc3:swap \
+-d /dev/sdc4:/:reiserfs:on \
+-d /dev/sdc5:/var:reiserfs:on \
+-d /dev/sdc6:/tmp:ext2:on \
+-d /dev/sdc7:/home:reiserfs \
+--uuid ON\
+--type hdd\
+--mbr /dev/sdc \
+--uefi OFF \
+--sheduler auto \
+--netconf openrc \
+--iface eth0:192.168.0.2:30 \
+--hostname server.magadan.ru \
+--ntp 192.168.0.1 \
+--dns 192.168.0.1 \
+--route default:192.168.0.1 \
+--root password \
+--crypt-home OFF \
+--video default \
+--fb 1280x1024-32 \
+--grub-terminal console \
+--autocheck OFF \
+--autocheck-interval 1d \
+--clean-pkg OFF \
+--update-other OFF \
+--force 

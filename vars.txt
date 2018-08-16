@@ -1,0 +1,8 @@
+SERVER_IFACE="eth0"
+SERVER_IP="192.168.0.2"
+SERVER_MASK="30"
+SERVER_HOST_NAME="mk.node"
+GATE_IP="192.168.0.1"
+HARD_DEV="/dev/sdc"
+USB_DEV="/dev/sda"
+
