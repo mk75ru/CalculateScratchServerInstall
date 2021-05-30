@@ -1,6 +1,10 @@
-cl-install \
+cl-install --locale ru_RU --timezone Asia/Tomsk  \
 --iface eth0:192.168.0.2:24 --route default:192.168.0.1:eth0   --dns 192.168.0.1 \
--u 7ya -u mk:update -u admin:all:sudo,wheel,default  \
---grub-passwd=off
+-u 7ya -u mk \
+--grub-passwd=off \
+--root-size=35G \
+--root-password \
+-D /dev/sdb
+
 
 
